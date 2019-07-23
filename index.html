@@ -1,53 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>BookmarkApp</title>
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/grid.css">
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-<body>
-        <header role= "banner" aria-live= 'polite' class='row'>
-            ><h1><span class='text-primary'>My</span>Bookmarks</h1>
-        </header>
-        <main>
-            <section class= 'row'>
-                <div class="controls">
-                    <button id="js-new-bookmark">ADD BOOKMARK</button>
-                    <select class= 'filter-control'name="filter" id="js-filter-control" aria-label= 'filter ratings by minimum rating'>
-                        <option value="0">ALL</option>
-                        <option aria-label= 'select 5 star rating' role= 'option' value= "5">5 stars</option>   
-                        <option aria-label= 'select 4 star rating' role= 'option' value= "4">4+ stars</option>   
-                        <option aria-label= 'select 3 star rating' role= 'option' value= "3">3+ stars</option>   
-                        <option aria-label= 'select 2 star rating' role= 'option' value= "2">2+ stars</option>    
-                    </select>
-                    <label for="filter-control" id= 'filter-label'>Filter</label>
-                </div>
-            </section> 
-            
-            <section class= 'row error-message-container'>
-                <span id= 'js-error-message'></span>
-            </section>
 
-            <section class="row">
-                <div class="bookmark-container">
-                    <ul class="js-bookmark-container"></ul>
-                </div>
-            </section>
-        </main>
-        
-            
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="scripts/api.js"></script>
-    <script src="scripts/store.js"></script>
-    <script src="scripts/bookmark-list.js"></script>
-    <script src="scripts/index.js"></script>
-    </main>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BookmarkApp</title>
+
+  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:400,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'>
+  <link rel='stylesheet' href='styles/grid.css'>
+  <link rel='stylesheet' href='styles/index.css'>
+  <!-- End styles -->
+</head>
+
+<body>
+  <header class='row' role='banner'>
+    <h1><span class= "text-primary">My</span>Bookmarks</h1>
+  </header>
+
+  <main role='main'>
+    <!-- Controls div -->
+    <section class="row">
+      <div class='controls'>
+        <!-- New bookmark button -->
+        <button id='js-new-bookmark'>NEW BOOKMARK</button>
+        <!-- End bookmark button -->
+
+        <!-- Filter -->
+        <select class='filter-control' id='js-filter-control' name='filter' aria-label='Filter ratings by minimum rating'>
+          <option value='0'>All</option>
+          <option value='5'>5 stars</option>
+          <option value='4'>4+ stars</option>
+          <option value='3'>3+ stars</option>
+          <option value='2'>2+ stars</option>
+        </select>
+        <label for='filter-control' id='filter-label'>Filter </label>
+        <!-- End filter -->
+
+      </div>
+    </section>
+    <!-- End controls div -->
+
+    <!-- Form container -->
+    <section class='row'>
+      <div id='js-form-container' class='form-container'></div>
+    </section>
+    <!-- End form container -->
+
+    <!-- Error container -->
+    <section class='row error-message-container'>
+      <span id='js-error-message'>
+      </span>
+    </section>
+    <!-- End error container -->
+
+    <!-- Bookmark container -->
+    <section class="row">
+      <div class='bookmark-container'>
+        <ul class='js-bookmarks-container'></ul>
+      </div>
+    </section>
+    <!-- End bookmark container -->
+  </main>
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="scripts/extend.js"></script>
+  <script type="text/javascript" src="scripts/store.js"></script>
+  <script type="text/javascript" src="scripts/generator.js"></script>
+  <script type="text/javascript" src="scripts/bookmarks.js"></script>
+  <script type="text/javascript" src="scripts/api.js"></script>
+  <script type="text/javascript" src="scripts/index.js"></script>
+  <!-- End scripts -->
 </body>
+
 </html>

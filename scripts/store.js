@@ -1,20 +1,20 @@
 'use strict';
+//eslint-disabled-next-line no-unused-vars
 const Store = (function() {
-
-
   /***** Functions for modifying the store *****/
   // Function for adding a bookmark
   function addBookmark(bookmarkObject) {
-    const defaultObjectsProps = {
+    // Default object to merge into bookmarkObject, which will give it the KVP of expanded: false
+    const defaultObjectProps = {
       expanded: false
     };
-    this.bookmarks.push(Object.assign(nookmarkObject, defaultObjectProps));
+    this.bookmarks.push(Object.assign(bookmarkObject, defaultObjectProps));
   }
 
   // Function for updating a bookmark
-  function updateBookmark(bookmarkId, bookmarkToMerge) {
-    const object = this.bookmark.find(bookmark => bookmark.id === bookmarkID);
-    object.assign(object. bookmarkToMerge);
+  function updateBookmark(bookmarkID, bookmarkToMerge) {
+    const object = this.bookmarks.find(bookmark => bookmark.id === bookmarkID);
+    Object.assign(object, bookmarkToMerge);
   }
 
   // Function for toggling adding bookmark property
@@ -24,70 +24,83 @@ const Store = (function() {
 
   // Function for toggling updating bookmark property
   function setUpdatingBookmarkStatus(bool) {
-    this.updateBookmark = bool;
+    this.updatingBookmark = bool;
   }
 
   // Function for deleting a bookmark by ID
-  function deleteBookmark(bookmarkId) {
-    this.bookmark = this.bookmark.filter(bookmark =>
-      bookmark.id !== bookmarkID);
+  function deleteBookmark(bookmarkID) {
+    this.bookmarks = this.bookmarks.filter(
+      bookmark => bookmark.id !== bookmarkID
+    );
   }
+
   // Function for filtering out bookmarks with rating < rating
-  function filterBookmarkByRatings(rating) {
+  function filterBookmarksByRating(rating) {
     setRatingFilter(rating);
-    this.bookmark = filterStoreBookmarkArray();
+    this.bookmarks = filterStoreBookmarksArray();
   }
 
   // Function for creating filtered array of bookmarks based on rating
-  function filterStoreBookmarkArray() {
+  function filterStoreBookmarksArray() {
     this.bookmarks.filter(bookmark => bookmark.rating >= this.ratingFilter);
   }
 
   // Function for toggling the expanded status of a bookmark by ID
-  function toggleBookmarkExpanded(bookmarkId) {
+  function toggleBookmarkExpanded(bookmarkID) {
     const bookmarkToToggle = this.bookmarks.find(
       bookmark => bookmark.id === bookmarkID
     );
     bookmarkToToggle.expanded = !bookmarkToToggle.expanded;
   }
 
+  /***** Setter functions *****/
+  // Store and display error messages
   function setErrorMessage(error) {
     this.errorMessage = error;
   }
 
+  // set the ratingFilter
   function setRatingFilter(value) {
-    this.rating = value;
+    this.ratingFilter = value;
   }
 
-  function findById(bookmarkID) {
+  /***** Functions for navigating the store *****/
+  // Find and return a bookmark by ID value
+  function findByID(bookmarkID) {
     return this.bookmarks.find(bookmark => bookmark.id === bookmarkID);
   }
 
+  // Find and delete a bookmark by ID value
   function findAndDelete(bookmarkID) {
-    this.bookmark = this.bookmarks.filter(
+    this.bookmarks = this.bookmarks.filter(
       bookmark => bookmark.id !== bookmarkID
     );
   }
 
+  // Function for checking the hidden status
   function checkIfShouldBeHidden(bookmark) {
-    return !bookmark.expired ? 'hidden' : '';
+    return !bookmark.expanded ? 'hidden' : '';
   }
 
-  function checkIfAddingBookmark () {
+  // Function for checking if we're adding a bookmark
+  function checkIfAddingBookmark() {
     return this.addingBookmark;
   }
 
+  // Function for checking if we're editing a bookmark
   function checkIfEditingBookmark() {
     return this.updatingBookmark;
   }
 
+  // Function for setting editingObject
   function setEditingObject(object) {
     this.editingObject.title = object.title;
-    this.editingObject.desc = object.desce;
+    this.editingObject.desc = object.desc;
     this.editingObject.url = object.url;
-    this.editingObject.reting = object.rating;
+    this.editingObject.rating = object.rating;
   }
 
+  // Function for resetting editingObject
   function resetEditingObject() {
     this.editingObject = {};
   }
@@ -100,10 +113,10 @@ const Store = (function() {
     checkIfAddingBookmark,
     setAddingBookmarkStatus,
     deleteBookmark,
-    filterBookmarkByRatings,
+    filterBookmarksByRating,
     toggleBookmarkExpanded,
     setErrorMessage,
-    findById,
+    findByID,
     setRatingFilter,
     findAndDelete,
     checkIfShouldBeHidden,
