@@ -177,16 +177,16 @@ const Generator = (function() {
         <div class='col-6'>
           <!-- Title -->
           <label for='js-form-title'>Title</label>
-          <li class='new-item-li'><input type='text' id='js-form-title' name='title' placeholder='Amazing programming article'></li>
+          <li class='new-item-li'><input type='text' id='js-form-title' name='title' placeholder='Title' required></li>
   
           <!-- Description -->
           <label for='js-form-description'>Description</label>
-          <li class='new-item-li'><textarea id='js-form-description' name='description' placeholder="I can't believe its not PHP!"></textarea>
+          <li class='new-item-li'><textarea id='js-form-description' name='description' placeholder="Short description..." required></textarea>
         </div>
         <div class='col-6'>
         <!-- URL -->
           <label for='js-form-url'>URL</label>
-          <li class='new-item-li'><input type='url' id='js-form-url' name='url' placeholder='https://...'></li>
+          <li class='new-item-li'><input type='url' id='js-form-url' name='url' placeholder='https://...' required></li>
   
           <!-- Rating -->
           <label for='js-form-rating' id='rating-label'>Rating: </label>

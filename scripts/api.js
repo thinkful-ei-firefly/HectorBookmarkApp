@@ -1,6 +1,5 @@
 'use strict';
 
-
 const API = (function() {
   // Base url for API
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/hector';

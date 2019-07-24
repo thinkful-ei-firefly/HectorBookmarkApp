@@ -1,6 +1,6 @@
 'use strict';
 
-/* global $, Store, API, Generator */
+/* global Store, API, Generator */
 
 const Bookmarks = (function() {
   /***** Event listener handlers *****/

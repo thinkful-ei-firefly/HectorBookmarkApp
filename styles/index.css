@@ -150,7 +150,10 @@ ul {
   }
   
   legend {
-    color: rgb(160, 160, 160);
+    color: darkcyan;
+    font-weight: 600;
+    font-size: 20px;
+    
   }
   
   fieldset {
@@ -192,7 +195,7 @@ ul {
   input[type='url']:focus,
   textarea:focus,
   select:focus {
-    border: 3px solid #aaa8a8;
+    border: 3px solid darkcyan;
     outline: 0;
   }
   
